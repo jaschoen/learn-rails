@@ -1,10 +1,11 @@
 class VisitorsController < ApplicationController
 
   def new
-    Rails.logger.debug 'DEBUG: entering new method'
     @owner = Owner.new
-    Rails.logger.debug 'DEBUG: Owner name is ' + @owner.name
-    Rails.logger.debug "\033[1;34;40m[DEBUG]\033]0m " + 'will appear in bold blue'
+	render 'visitors/new', :layout => true
+	# render 'visitors/new', :layout => 'special' would use the 'special' layout
+	flash[:notice] = 'Welcome!'
+    flash.now[:alert] = "It's a thinking computer"
   end
 
 end
